@@ -1,2 +1,6 @@
 <h3>Commentaires de {{user.firstName}} {{user.lastName}}:</h3>
-
+<ul *ngFor="let comment of comments, let j = index">
+  <li *ngIf="comment.userId === user.id">
+    {{comment.content}}
+  </li>
+</ul>
