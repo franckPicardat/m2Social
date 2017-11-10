@@ -1,0 +1,19 @@
+<ul>
+  <li *ngFor="let user of users, let i = index"><a  [routerLink]="['/user',i+1]">{{user.firstName}}</a>
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let post of posts, let i = index"><p>post numéro {{post.id}} : {{post.content}}</p>
+    <ul *ngFor="let comment of comments, let j = index">
+      <li *ngIf="comment.postId === post.id"><p>{{comment.content}}</p>
+        <ul *ngFor="let user of users, let i = index">
+          <li class="commentOwner" *ngIf="user.id === comment.userId">
+            <p >{{user.firstName}} {{user.lastName}}</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
